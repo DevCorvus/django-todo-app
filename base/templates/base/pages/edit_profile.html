@@ -1,0 +1,23 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'profile' request.user.uuid %}{% endblock  %}
+{% block header %}Edit Profile{% endblock  %}
+
+{% block content %}
+{% if messages %}
+<ul class="text-red-400">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+<form class="md:w-1/2 flex flex-col gap-2" action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div>
+    <button class="text-white bg-green-400 p-2 rounded-md font-semibold" type="submit">
+      Save Changes
+    </button>
+  </div>
+</form>
+{% endblock %}

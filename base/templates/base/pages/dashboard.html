@@ -1,0 +1,18 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+<div class="grid grid-cols-12 gap-10">
+  <main class="col-span-9">
+    {% include 'base/components/tasks.html' %}
+  </main>
+  <aside class="col-span-3">
+    <header class="mb-2 text-3xl font-thin">
+      <h2>Groups</h2>
+    </header>
+    {% include 'base/components/feed_groups.html' %}
+    <a class="md:hidden text-white font-semibold bg-green-400 p-2 rounded-md" href="{% url 'groups' %}">
+      Group List
+    </a>
+  </aside>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<div>
+  <div class="text-blue-500 text-xl">
+    {% for group in groups %}
+    <div>
+      <p>
+        <a href="{% url 'show_group' group.uuid %}">{{ group.name }}</a>
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="my-4">
+    <a class="btn-green" href="{% url 'create_group' %}">
+      Create Group
+    </a>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'show_group' uuid %}{% endblock %}
+{% block header %}Edit Group{% endblock %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2 mt-2" action="" method="POST">
+  {% csrf_token %}
+  {{ group_form.non_field_errors }}
+  <div>
+    {{ group_form.name.errors }}
+    <label for="{{ group_form.name.id_for_label }}">Name:</label>
+    <br>
+    {{ group_form.name }}
+  </div>
+  <div>
+    {{ group_form.description.errors }}
+    <label for="{{ group_form.description.id_for_label }}">Description:</label>
+    <br>
+    {{ group_form.description }}
+  </div>
+  <div>
+    <button class="btn-green" type="submit">
+      Apply Changes
+    </button>
+  </div>
+</form>
+{% endblock %}

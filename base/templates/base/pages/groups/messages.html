@@ -1,0 +1,9 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'show_group' uuid %}{% endblock  %}
+{% block header %}Messages ({{group_messages|length}}){% endblock  %}
+
+{% block content %}
+{% include 'base/components/search.html' %}
+{% include 'base/components/feed_messages.html' %}
+{% endblock %}

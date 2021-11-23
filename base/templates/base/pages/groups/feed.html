@@ -1,0 +1,11 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'dashboard' %}{% endblock %}
+{% block header %}Groups ({{groups|length}}){% endblock %}
+
+{% block content %}
+<div class="md:w-1/2">
+  {% include 'base/components/search.html' %}
+</div>
+{% include 'base/components/feed_groups.html' %}
+{% endblock %}

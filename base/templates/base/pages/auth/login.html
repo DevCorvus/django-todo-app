@@ -1,0 +1,15 @@
+{% extends 'layouts/generic.html' %}
+
+{% block header %}Sign In{% endblock  %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2" action="{% url 'login' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div>
+    <button class="btn-green" type="submit">
+      Login
+    </button>
+  </div>
+</form>
+{% endblock %}

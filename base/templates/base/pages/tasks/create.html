@@ -1,0 +1,26 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% if uuid %}{% url 'show_group' uuid %}{% else %}{% url 'dashboard' %}{% endif %}{% endblock  %}
+{% block header %}Create {% if uuid %}Group {% endif %}Task{% endblock  %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2" action="{% if uuid %}{% url 'create_group_task' uuid %}{% else %}{% url 'create_task' %}{% endif %}" method="POST">
+  {% csrf_token %}
+  {{ task_form.non_field_errors }}
+  <div>
+    {{ task_form.name.errors }}
+    <label for="{{ task_form.name.id_for_label }}">Name:</label>
+    {{ task_form.name }}
+  </div>
+  <div>
+    {{ task_form.description.errors }}
+    <label for="{{ task_form.description.id_for_label }}">Description:</label>
+    {{ task_form.description }}
+  </div>
+  <div>
+    <button class="btn-green" type="submit">
+      Add {% if uuid %}Group {% endif %}Task
+    </button>
+  </div>
+</form>
+{% endblock %}

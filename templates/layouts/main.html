@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body style="background: linear-gradient(to bottom, #e0eafc, #cfdef3);">
+  {% include 'partials/navbar.html' %}
+  <div class="flex justify-center">
+    <div class="container min-h-screen">
+      <div class="m-10">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+  {% include 'partials/footer.html' %}
+</body>
+</html>

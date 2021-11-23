@@ -1,0 +1,31 @@
+<nav class="flex justify-between bg-green-400 p-2 text-xl text-white shadow-md border-b-2 border-white">
+  <header>
+    <h1>Django Todo App</h1>
+  </header>
+  <ul class="flex gap-4">
+    {% if request.user.is_authenticated %}
+    <li>
+      <a href="{% url 'dashboard' %}">Dashboard</a>
+    </li>
+    <li>
+      <a href="{% url 'profile' request.user.uuid %}">Account</a>
+    </li>
+    <li>
+      <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+    {% else %}
+    <li>
+      <a href="{% url 'home' %}">Home</a>
+    </li>
+    <li>
+      <a href="{% url 'login' %}">Login</a>
+    </li>
+    <li>
+      <a href="{% url 'register' %}">Register</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

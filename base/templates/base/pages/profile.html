@@ -1,0 +1,35 @@
+{% extends 'layouts/generic.html' %}
+
+{% block header %}Profile{% endblock  %}
+
+{% block content %}
+<div class="font-normal bg-white mt-2 mb-6 p-2 rounded-md shadow-md">
+  <table class="text-left w-full md:w-1/2">
+    <tr>
+      <th>Name:</th>
+      <td>{% if user.name %}{{ user.name }}{% else %}<span class="italic">Not provided</span>{% endif %}</td>
+    </tr>
+    <tr>
+      <th>Username:</th>
+      <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{% if user.email %}{{ user.email }}{% else %}<span class="italic">Not provided</span>{% endif %}</td>
+    </tr>
+    <tr>
+      <th>Date joined:</th>
+      <td>{{ user.date_joined }}</td>
+    </tr>
+    <tr>
+      <th>Last login:</th>
+      <td>{{ user.last_login|timesince }}</td>
+    </tr>
+  </table>
+</div>
+{% if user == request.user %}
+<a class="btn-green" href="{% url 'edit_profile' %}">
+  Edit Profile
+</a>
+{% endif %}
+{% endblock %}

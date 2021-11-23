@@ -1,0 +1,59 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'show_group' uuid %}{% endblock  %}
+{% block header %}Group Members{% endblock  %}
+
+{% block content %}
+{% if request.user == host %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <div>
+    <label class="font-thin" for="username">New Member:</label>
+    <br>
+    <input
+      class="w-full md:w-1/2 p-2 rounded-md"
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Enter new member's username..."
+    >
+  </div>
+  <button class="btn-green my-2" type="submit">
+    Add Member
+  </button>
+</form>
+<div class="md:w-1/2">
+  {% include 'base/components/search.html' %}
+</div>
+{% endif %}
+<div>
+  <header>
+    <h3>Members:</h3>
+  </header>
+  <div class="flex flex-wrap gap-4 text-xl p-2">
+    {% if members|length > 0 %}
+    {% for member in members %}
+    <div class="flex items-center gap-2 bg-white p-1 rounded-md shadow-md">
+      <a class="text-blue-500" href="{% url 'profile' member.uuid %}">
+        @{{ member.username }}
+      </a>
+      {% if request.user == host %}
+      <form class="flex items-center" action="{% url 'delete_member' uuid member.uuid %}" method="POST">
+        {% csrf_token %}
+        <button class="text-black hover:text-red-400 transition" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </form>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div>
+      <p>There's no members to show!</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

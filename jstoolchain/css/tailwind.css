@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-green {
+    @apply font-semibold text-white bg-green-400 p-2 rounded-md;
+  }
+}

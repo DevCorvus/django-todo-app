@@ -1,0 +1,16 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'groups' %}{% endblock %}
+{% block header %}Create Group{% endblock %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2" action="" method="POST">
+  {% csrf_token %}
+  {{ group_form.as_p }}
+  <div>
+    <button class="btn-green" type="submit">
+      Create Group
+    </button>
+  </div>
+</form>
+{% endblock %}

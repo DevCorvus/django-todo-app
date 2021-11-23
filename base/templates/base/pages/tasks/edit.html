@@ -1,0 +1,26 @@
+{% extends 'layouts/generic.html' %}
+
+{% block back_url %}{% url 'show_task' uuid %}{% endblock  %}
+{% block header %}Edit Task{% endblock  %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2" action="{% url 'update_task' uuid %}" method="POST">
+  {% csrf_token %}
+  {{ task_form.non_field_errors }}
+  <div>
+    {{ task_form.name.errors }}
+    <label for="{{ task_form.name.id_for_label }}">Name:</label>
+    {{ task_form.name }}
+  </div>
+  <div>
+    {{ task_form.description.errors }}
+    <label for="{{ task_form.description.id_for_label }}">Description:</label>
+    {{ task_form.description }}
+  </div>
+  <div>
+    <button class="btn-green" type="submit">
+      Update Task
+    </button>
+  </div>
+</form>
+{% endblock %}

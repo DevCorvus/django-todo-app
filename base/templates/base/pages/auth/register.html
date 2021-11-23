@@ -1,0 +1,24 @@
+{% extends 'layouts/generic.html' %}
+
+{% block header %}Sign Up{% endblock %}
+
+{% block content %}
+<form class="md:w-1/2 flex flex-col gap-2" action="{% url 'register' %}" method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+  <div>
+    {{ field.non_error_fields }}
+    {{ field.label_tag }}
+    {{ field }}
+    {% if field.help_text %}
+    <small class="text-gray-500">{{ field.help_text|safe }}</small>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div>
+    <button class="btn-green" type="submit">
+      Register
+    </button>
+  </div>
+</form>
+{% endblock %}
