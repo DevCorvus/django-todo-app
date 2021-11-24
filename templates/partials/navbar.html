@@ -1,6 +1,8 @@
 <nav class="flex justify-between bg-green-400 p-2 text-xl text-white shadow-md border-b-2 border-white">
   <header>
-    <h1>Django Todo App</h1>
+    <h1>
+      <a href="{% url 'home' %}">Django Todo App</a>
+    </h1>
   </header>
   <ul class="flex gap-4">
     {% if request.user.is_authenticated %}
@@ -8,7 +10,7 @@
       <a href="{% url 'dashboard' %}">Dashboard</a>
     </li>
     <li>
-      <a href="{% url 'profile' request.user.uuid %}">Account</a>
+      <a href="{% url 'profile' request.user.uuid %}">Profile</a>
     </li>
     <li>
       <form action="{% url 'logout' %}" method="POST">
