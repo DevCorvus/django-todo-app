@@ -70,7 +70,7 @@ def login_view(request):
         return render(request, 'base/pages/auth/login.html', {'form': form})
 
     elif request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
         try:
             user = User.objects.get(username=username)
