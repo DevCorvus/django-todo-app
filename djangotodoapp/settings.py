@@ -72,17 +72,6 @@ WSGI_APPLICATION = 'djangotodoapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'djangotodoapp',
-#         'USER': 'postgres',
-#         'PASSWORD': 'andromeda2002',
-#         'HOST': '127.0.0.1',
-#         'PORT': '4444'
-#     }
-# }
-
 if ENV == 'production':
     import dj_database_url
     DATABASES = {
@@ -94,7 +83,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
+            'NAME': 'djangotodoapp',
             'USER': 'postgres',
             'PASSWORD': 'andromeda2002',
             'HOST': 'localhost',
