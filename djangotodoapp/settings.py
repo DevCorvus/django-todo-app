@@ -15,7 +15,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if ENV == 'production' else True
 
-ALLOWED_HOSTS = ['djangotodoapp-devcorvus.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -29,13 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base.apps.BaseConfig',
-    
+
     'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    
+
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,10 +84,10 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'djangotodoapp',
-            'USER': 'postgres',
-            'PASSWORD': 'andromeda2002',
+            'USER': 'devcorvus',
+            'PASSWORD': '',
             'HOST': 'localhost',
-            'PORT': '4444',
+            'PORT': '5432',
     }
 }
 
@@ -157,3 +157,4 @@ if ENV == 'production':
     SECURE_HSTS_SECONDS = 86400  # 1 day
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
